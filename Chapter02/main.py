@@ -45,7 +45,9 @@ scores = model.evaluate(X_test, y_test, verbose=False)
 print("Testing Accuracy: %.2f%%\n" % (scores[1]*100))
 
 # Results - Confusion Matrix
-y_test_pred = model.predict_classes(X_test)
+# support ended - edited 22.04.02
+# y_test_pred = model.predict_classes(X_test)
+y_test_pred = np.round(model.predict(X_test)).astype(int)
 c_matrix = confusion_matrix(y_test, y_test_pred)
 ax = sns.heatmap(c_matrix, annot=True, xticklabels=['No Diabetes', 'Diabetes'], yticklabels=['No Diabetes', 'Diabetes'], cbar=False, cmap='Blues')
 ax.set_xlabel("Prediction")
